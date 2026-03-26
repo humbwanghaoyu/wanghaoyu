@@ -1,0 +1,85 @@
+\documentclass[twocolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{a4paper, margin=0.75in}
+
+\title{\textbf{Predicting Heart Failure Mortality: A Comparative Analysis of Machine Learning and Deep Learning Models}}
+\author{Haoyu Wang}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Predicting heart failure mortality is critical for clinical decision-making. This study compares a Multi-Layer Perceptron (MLP) with traditional Logistic Regression. Using a clinical dataset (n=299), we found that Logistic Regression achieved a superior accuracy of 81.7\%, outperforming the MLP model (75.0\%).
+\end{abstract}
+
+\section{Methodology}
+\subsection{Data Preprocessing}
+To ensure reproducibility, we implemented a median imputation for missing data and utilized \textbf{Stratified Sampling} (80/20 split). Features were standardized using Z-score scaling to facilitate the convergence of the MLP model.
+
+\subsection{Exploratory Analysis and Workflow}
+Before modeling, we analyzed feature correlations to understand underlying clinical relationships. Figure \ref{fig:heatmap} displays the correlation heatmap of the clinical records. The overall experimental methodology follows the pipeline illustrated in Figure \ref{fig:workflow}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{correlation_heatmap.png}
+    \caption{Correlation heatmap of clinical features.}
+    \label{fig:heatmap}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{ai_workflow.jpg}
+    \caption{Proposed AI workflow for heart failure prediction.}
+    \label{fig:workflow}
+\end{figure}
+
+\section{Results}
+\subsection{Feature Importance}
+As shown in Figure \ref{fig:importance}, Random Forest analysis identified \textbf{Serum Creatinine} and \textbf{Ejection Fraction} as the most critical predictors of mortality.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{feature_importance.png}
+    \caption{Clinical features ranked by Random Forest importance.}
+    \label{fig:importance}
+\end{figure}
+
+\subsection{Performance Evaluation}
+Table \ref{tab:performance} details the comparative metrics. The results indicate that traditional models remain robust for small-scale clinical datasets. To further illustrate the models' discriminative ability, Figure \ref{fig:roc} presents the Receiver Operating Characteristic (ROC) curves.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{roc_curve.png}
+    \caption{ROC curves comparing model performance.}
+    \label{fig:roc}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Model Performance Comparison}
+\label{tab:performance}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Model} & \textbf{Accuracy} & \textbf{AUC} \\ 
+\midrule
+Logistic Regression & 0.817 & 0.859 \\ 
+MLP Classifier & 0.750 & 0.746 \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+The superior performance of Logistic Regression suggests that simpler linear models are less prone to overfitting on limited clinical samples (N=299) compared to complex neural network architectures.
+
+\begin{thebibliography}{99}
+\bibitem{chicco2020} Chicco, D., \& Jurman, G. (2020). Machine learning can predict survival of patients with heart failure. \textit{BMC Medical Informatics}, 20(1).
+\end{thebibliography}
+
+\end{document}

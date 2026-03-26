@@ -1,0 +1,3 @@
+Model,Accuracy,AUC
+Logistic Regression (Traditional),0.8166666666666667,0.858793324775353
+MLP Classifier (Deep Learning),0.75,0.7458279845956354
